@@ -1,0 +1,4119 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: sailboats
+    label: Sailboats
+    folder: cms/sailboats
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_card-image
+        label: Card image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_wide-image
+        label: Wide image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_class
+        label: Class
+        widget: string
+        required: false
+      - hint: ''
+        name: f_sailing-boat-name
+        label: Sailing boat name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_length
+        label: Length
+        widget: string
+        required: false
+      - hint: ''
+        name: f_cabins
+        label: Cabins
+        widget: string
+        required: false
+      - hint: ''
+        name: f_max-capacity
+        label: Max. capacity
+        widget: string
+        required: false
+      - hint: ''
+        name: f_year
+        label: Year
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: sailboats
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[sailboats].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: luxury_yacht
+    label: Luxury Yachts
+    folder: cms/luxury-yacht
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Featured details
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_card-image
+        label: Card image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_wide-image
+        label: Wide image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_listing-type
+        label: Listing type
+        widget: select
+        required: false
+        options:
+          - label: Diamond Class
+            value: Diamond Class
+          - label: Golden Class
+            value: Golden Class
+          - label: Silver Class
+            value: Silver Class
+      - hint: ''
+        name: f_class
+        label: Class
+        widget: string
+        required: false
+      - hint: ''
+        name: f_yacht-name
+        label: Yacht name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_lenght
+        label: Length
+        widget: string
+        required: false
+      - hint: ''
+        name: f_beam
+        label: Beam
+        widget: string
+        required: false
+      - hint: ''
+        name: f_max-capacity
+        label: Max. capacity
+        widget: string
+        required: false
+      - hint: ''
+        name: f_cabins
+        label: Cabins
+        widget: string
+        required: false
+      - hint: ''
+        name: f_year
+        label: Year
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured
+        widget: number
+        required: false
+      - hint: ''
+        name: f_listing-description
+        label: Listing description short
+        widget: string
+        required: false
+      - hint: ''
+        name: f_listing-description-long
+        label: Listing description long
+        widget: string
+        required: false
+      - hint: ''
+        name: f_images
+        label: Images
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_route
+        label: Route
+        widget: string
+        required: false
+      - hint: ''
+        name: f_speed
+        label: Speed
+        widget: string
+        required: false
+      - hint: ''
+        name: f_double-cabins
+        label: Double cabins
+        widget: string
+        required: false
+      - hint: ''
+        name: f_twin-cabins
+        label: Twin cabins
+        widget: string
+        required: false
+      - hint: ''
+        name: f_trips
+        label: Trips
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: luxury-yacht
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[luxury-yacht].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: category
+    label: Categories
+    folder: cms/category
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_icon
+        label: Icon
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: category
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[category].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: product
+    label: Products
+    folder: cms/product
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: variation-properties
+        label: Variation Properties
+        widget: list
+        required: false
+        summary: '{{name}}'
+        fields:
+          - hint: ''
+            name: slug
+            label: Slug
+            widget: hidden
+            required: true
+          - hint: ''
+            name: name
+            label: Name
+            widget: string
+            required: true
+          - hint: ''
+            name: values
+            label: Values
+            widget: list
+            required: true
+            summary: '{{name}}'
+            fields:
+              - hint: ''
+                name: slug
+                label: Slug
+                widget: hidden
+                required: true
+              - hint: ''
+                name: name
+                label: Name
+                widget: string
+                required: true
+      - hint: ''
+        name: variations
+        label: Variations
+        widget: list
+        required: true
+        summary: '{{title}}'
+        min: 1
+        fields:
+          - hint: Slug of the variation
+            name: slug
+            label: Slug
+            widget: string
+            required: true
+          - hint: Default variation?
+            name: default
+            label: Default
+            widget: boolean
+            required: true
+          - hint: ''
+            name: variation-properties
+            label: SKU Values
+            widget: prop-values
+            required: false
+          - hint: ''
+            name: title
+            label: Name
+            widget: string
+            required: true
+          - hint: ''
+            name: f_main-image
+            label: Main Image
+            widget: object
+            required: false
+            fields:
+              - hint: ''
+                name: url
+                label: Image
+                widget: image
+                required: false
+                allow_multiple: false
+              - hint: Image Alt
+                name: alt
+                label: alt
+                widget: string
+                required: false
+          - hint: ''
+            name: f_price
+            label: Price
+            widget: price
+            required: true
+          - hint: ''
+            name: f_width
+            label: Width
+            widget: number
+            required: false
+          - hint: ''
+            name: f_length
+            label: Length
+            widget: number
+            required: false
+          - hint: ''
+            name: f_height
+            label: Height
+            widget: number
+            required: false
+          - hint: ''
+            name: f_weight
+            label: Weight
+            widget: number
+            required: false
+          - hint: ''
+            name: f_sku
+            label: SKU
+            widget: string
+            required: false
+          - hint: Compare at Price must be higher than price
+            name: f_compare-at-price
+            label: Compare at price
+            widget: price
+            required: false
+          - hint: ''
+            name: f_more-images
+            label: More Images
+            widget: list
+            required: false
+            fields:
+              - hint: ''
+                name: url
+                label: Image
+                widget: image
+                required: false
+                allow_multiple: false
+              - hint: Image Alt
+                name: alt
+                label: alt
+                widget: string
+                required: false
+          - hint: ''
+            name: f_download-files
+            label: Downloads
+            widget: list
+            required: false
+            fields:
+              - hint: ''
+                name: url
+                label: Image
+                widget: image
+                required: false
+                allow_multiple: false
+              - hint: Image Alt
+                name: alt
+                label: alt
+                widget: string
+                required: false
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Details
+        name: body
+        widget: markdown
+        required: false
+      - hint: Add this product to one or more categories.
+        name: f_category
+        label: Categories
+        widget: relation
+        required: false
+        collection: category
+        value_field: cms/category/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_description
+        label: Description
+        widget: string
+        required: false
+      - hint: ''
+        name: f_shippable
+        label: Shippable
+        widget: boolean
+        required: false
+      - hint: Will display a black circle with text inside, for example "sale".
+        name: f_display-badge
+        label: Display Badge
+        widget: boolean
+        required: false
+      - hint: ''
+        name: f_badge-text
+        label: Badge Text
+        widget: relation
+        required: false
+        collection: speedboats
+        value_field: cms/speedboats/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: 'Type the "before price". '
+        name: f_price-was
+        label: Price Was
+        widget: number
+        required: false
+      - hint: ''
+        name: f_featured-product
+        label: Featured product
+        widget: boolean
+        required: false
+      - hint: ''
+        name: f_specs
+        label: Specs
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_faq
+        label: Faq
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_image-1
+        label: Image 1
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-2
+        label: Image 2
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-3
+        label: Image 3
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-4
+        label: Image 4
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-5
+        label: Image 5
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_sort-order
+        label: Sort Order
+        widget: number
+        required: false
+      - hint: ''
+        name: f_related-products
+        label: Related Products
+        widget: relation
+        required: false
+        collection: category
+        value_field: cms/category/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_ec-product-type
+        label: Product type
+        widget: select
+        required: false
+        options:
+          - label: Physical
+            value: Physical
+          - label: Digital
+            value: Digital
+          - label: Service
+            value: Service
+          - label: Advanced
+            value: Advanced
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: product
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[product].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: speedboats
+    label: Speedboats
+    folder: cms/speedboats
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_hero-image-3
+        label: Card image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_listing-type
+        label: Listing type
+        widget: select
+        required: false
+        options:
+          - label: Diamond Class
+            value: Diamond Class
+          - label: Golden Class
+            value: Golden Class
+          - label: Silver Class
+            value: Silver Class
+      - hint: ''
+        name: f_icon-2-3
+        label: Wide image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_route-4
+        label: Class
+        widget: string
+        required: false
+      - hint: ''
+        name: f_summary-3
+        label: Boat name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_year-2-3
+        label: From
+        widget: string
+        required: false
+      - hint: ''
+        name: f_route-2-3
+        label: Length
+        widget: string
+        required: false
+      - hint: ''
+        name: f_length-4
+        label: Max. capacity
+        widget: string
+        required: false
+      - hint: ''
+        name: f_beam-4
+        label: Year
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured-4
+        label: Featured
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: speedboats
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[speedboats].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Protected page, key: -11c6301f'
+            label: Text
+            name: '-11c6301f'
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: Page not found, key: 49a057c4'
+            label: Text
+            name: 49a057c4
+            widget: string
+          - hint: >-
+              Original text: The page you are looking for doesn't exist or has
+              been moved., key: 583f3656
+            label: Text
+            name: 583f3656
+            widget: string
+          - hint: 'Original text: BACK TO HOME, key: 987e92b'
+            label: Text
+            name: 987e92b
+            widget: string
+          - hint: 'Original text: Back to home, key: -74b436b5'
+            label: Text
+            name: '-74b436b5'
+            widget: string
+          - hint: 'Original text: THE WORLD OF YOUR DREAMS, key: 407c5371'
+            label: Text
+            name: 407c5371
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: About us, key: 645f0031'
+            label: Text
+            name: 645f0031
+            widget: string
+          - hint: 'Original text: Our Team, key: 290af1'
+            label: Text
+            name: 290af1
+            widget: string
+          - hint: 'Original text: CHARTER YOUR YACHT, key: 3a37caf'
+            label: Text
+            name: 3a37caf
+            widget: string
+          - hint: 'Original text: Yacht World , key: 153510a7'
+            label: Text
+            name: 153510a7
+            widget: string
+          - hint: 'Original text: BEHIND THE SCIENCE, key: -42043071'
+            label: Text
+            name: '-42043071'
+            widget: string
+          - hint: 'Original text: Contact Us , key: 65c19502'
+            label: Text
+            name: 65c19502
+            widget: string
+          - hint: 'Original text: Contact us, key: 7f274abe'
+            label: Text
+            name: 7f274abe
+            widget: string
+          - hint: 'Original text: +201201089636, key: 22647b13'
+            label: Text
+            name: 22647b13
+            widget: string
+          - hint: 'Original text: info@egyptyachting.com, key: 6bf8ebb7'
+            label: Text
+            name: 6bf8ebb7
+            widget: string
+          - hint: 'Original text: ADDRESS, key: -199cd82c'
+            label: Text
+            name: '-199cd82c'
+            widget: string
+          - hint: 'Original text: RED SEA, EGYPT , key: -5150e647'
+            label: Text
+            name: '-5150e647'
+            widget: string
+          - hint: 'Original text: QUICK LINKS, key: 6a914b86'
+            label: Text
+            name: 6a914b86
+            widget: string
+          - hint: 'Original text: Terms & Conditions, key: 4f912d2b'
+            label: Text
+            name: 4f912d2b
+            widget: string
+          - hint: 'Original text: Privacy Policy, key: -3fbde6f6'
+            label: Text
+            name: '-3fbde6f6'
+            widget: string
+          - hint: 'Original text: Contact Us, key: 7f2746de'
+            label: Text
+            name: 7f2746de
+            widget: string
+          - hint: 'Original text: Get in touch, key: -5230a9d2'
+            label: Text
+            name: '-5230a9d2'
+            widget: string
+          - hint: 'Original text: We would love to hear from you. , key: 4fc9f559'
+            label: Text
+            name: 4fc9f559
+            widget: string
+          - hint: >-
+              Original text: Please contact us directly via e-mail or whatsapp.,
+              key: 7573a770
+            label: Text
+            name: 7573a770
+            widget: string
+          - hint: 'Original text: Instagram, key: 792b2792'
+            label: Text
+            name: 792b2792
+            widget: string
+          - hint: 'Original text: First class yachting house with , key: 72f0b18d'
+            label: Text
+            name: 72f0b18d
+            widget: string
+          - hint: >-
+              Original text: bespoke luxury across yach & boat charter., key:
+              -5fb03a05
+            label: Text
+            name: '-5fb03a05'
+            widget: string
+          - hint: 'Original text: CHARTER, key: 56d8f0eb'
+            label: Text
+            name: 56d8f0eb
+            widget: string
+          - hint: 'Original text: Our world , key: -299fa1be'
+            label: Text
+            name: '-299fa1be'
+            widget: string
+          - hint: 'Original text: Motorboats, key: -723f6c02'
+            label: Text
+            name: '-723f6c02'
+            widget: string
+          - hint: 'Original text: Sailboats, key: -212b623e'
+            label: Text
+            name: '-212b623e'
+            widget: string
+          - hint: 'Original text: Luxury Yachts, key: 1deed91f'
+            label: Text
+            name: 1deed91f
+            widget: string
+          - hint: 'Original text: Daily trips , key: -488a7307'
+            label: Text
+            name: '-488a7307'
+            widget: string
+          - hint: 'Original text: Contact us , key: 65c20d22'
+            label: Text
+            name: 65c20d22
+            widget: string
+          - hint: 'Original text: GET IN TOUCH, key: -12b421f2'
+            label: Text
+            name: '-12b421f2'
+            widget: string
+          - hint: 'Original text: www.egyptyachting.com, key: -52af99ce'
+            label: Text
+            name: '-52af99ce'
+            widget: string
+          - hint: 'Original text: NEWSLETTER, key: 5ea1f0b9'
+            label: Text
+            name: 5ea1f0b9
+            widget: string
+          - hint: 'Original text: Your submission has been received!, key: -4fec8807'
+            label: Text
+            name: '-4fec8807'
+            widget: string
+          - hint: 'Original text: Oops! Something went wrong , key: 5e8b37b7'
+            label: Text
+            name: 5e8b37b7
+            widget: string
+          - hint: 'Original text: while submitting the form., key: 29976070'
+            label: Text
+            name: '29976070'
+            widget: string
+          - hint: 'Original text: PAYMENT METHODS , key: -38be8038'
+            label: Text
+            name: '-38be8038'
+            widget: string
+          - hint: >-
+              Original text: ©EgyptYachting 2022. All Rights Reserved. , key:
+              3acb8241
+            label: Text
+            name: 3acb8241
+            widget: string
+          - hint: 'Original text: . , key: 5b2'
+            label: Text
+            name: 5b2
+            widget: string
+          - hint: 'Original text: Made with love., key: -6895c513'
+            label: Text
+            name: '-6895c513'
+            widget: string
+          - hint: 'Original text: Coming Soon, key: ccc773a'
+            label: Text
+            name: ccc773a
+            widget: string
+          - hint: 'Original text: ©COPYRIGHT 2022 - EGYPTYACHTING, key: 73a1b03'
+            label: Text
+            name: 73a1b03
+            widget: string
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+          - hint: 'Original text: Find your , key: 264f4d46'
+            label: Text
+            name: 264f4d46
+            widget: string
+          - hint: 'Original text: favourite yacht , key: 131447b0'
+            label: Text
+            name: 131447b0
+            widget: string
+          - hint: >-
+              Original text: Unrivalled luxury. Your ideal yacht and crew are
+              waiting to deliver an experience like no other. Just tell us what
+              perfection looks like to you., key: -17038eeb
+            label: Text
+            name: '-17038eeb'
+            widget: text
+          - hint: 'Original text: All, key: 10181'
+            label: Text
+            name: '10181'
+            widget: string
+          - hint: 'Original text: Diamond Class, key: -3e8e3094'
+            label: Text
+            name: '-3e8e3094'
+            widget: string
+          - hint: 'Original text: Golden Class, key: -6398945f'
+            label: Text
+            name: '-6398945f'
+            widget: string
+          - hint: 'Original text: Silver Class, key: -4438495b'
+            label: Text
+            name: '-4438495b'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: looking for something else? , key: 11c97eb4'
+            label: Text
+            name: 11c97eb4
+            widget: string
+          - hint: 'Original text: Get in touch with us today, key: -52475d19'
+            label: Text
+            name: '-52475d19'
+            widget: string
+          - hint: >-
+              Original text: Escape to see the world on your terms, in the most
+              unforgettable way. Tell us exactly how you want your charter and
+              we will tailor every moment on board to your taste., key: 4570abe6
+            label: Text
+            name: 4570abe6
+            widget: text
+          - hint: >-
+              Original text: Start planning. Connect with our boat rental
+              agent., key: 22755570
+            label: Text
+            name: '22755570'
+            widget: string
+          - hint: 'Original text: ©COPYRIGHT 2021 - EGYPTYACHTING, key: -496fc2fe'
+            label: Text
+            name: '-496fc2fe'
+            widget: string
+          - hint: 'Original text: Our team, key: 3796d1'
+            label: Text
+            name: 3796d1
+            widget: string
+          - hint: >-
+              Original text: Yachting experience - your new way of living, key:
+              -61dd5c68
+            label: Text
+            name: '-61dd5c68'
+            widget: string
+          - hint: 'Original text: OUR CONCEPT, key: -137e16ac'
+            label: Text
+            name: '-137e16ac'
+            widget: string
+          - hint: >-
+              Original text: Founded with love for the best charter experience.
+              Egypt Yachting selected only the most beautiful exterior boats to
+              allow a unique experience not available anywhere else. Featuring
+              best technologies alongside great design, and breathtaking
+              performance., key: -718573e
+            label: Text
+            name: '-718573e'
+            widget: text
+          - hint: >-
+              Original text: Yachting is all about the excitement and passion ,
+              key: -1d9f3868
+            label: Text
+            name: '-1d9f3868'
+            widget: string
+          - hint: 'Original text: DREAM DISCOVERY, key: 65950993'
+            label: Text
+            name: '65950993'
+            widget: string
+          - hint: >-
+              Original text: We built our reputation for getting the most
+              luxurious offers carefully selected for every client. We have
+              forged a community from adventurous spirits, vast open waters, and
+              a host of musicians, collaborators, sailors, and revelers., key:
+              -5b5aa4c3
+            label: Text
+            name: '-5b5aa4c3'
+            widget: text
+          - hint: 'Original text: THE BOOTS ON THE GROUND, key: 1361089'
+            label: Text
+            name: '1361089'
+            widget: string
+          - hint: 'Original text: Momo, key: 24aee4'
+            label: Text
+            name: 24aee4
+            widget: string
+          - hint: 'Original text: Hassanein, key: -633a689c'
+            label: Text
+            name: '-633a689c'
+            widget: string
+          - hint: 'Original text: Director , key: 3e123df4'
+            label: Text
+            name: 3e123df4
+            widget: string
+          - hint: 'Original text: Alice, key: 3c6a660'
+            label: Text
+            name: 3c6a660
+            widget: string
+          - hint: 'Original text: Aloha, key: 3c6bd7d'
+            label: Text
+            name: 3c6bd7d
+            widget: string
+          - hint: 'Original text: Marketing , key: -468ca926'
+            label: Text
+            name: '-468ca926'
+            widget: string
+          - hint: 'Original text: Director, key: 1284b7ac'
+            label: Text
+            name: 1284b7ac
+            widget: string
+          - hint: 'Original text: Hamada, key: -7f992656'
+            label: Text
+            name: '-7f992656'
+            widget: string
+          - hint: 'Original text: El Said , key: -73d38762'
+            label: Text
+            name: '-73d38762'
+            widget: string
+          - hint: 'Original text: Charter OPERATION, key: 5d4c1c52'
+            label: Text
+            name: 5d4c1c52
+            widget: string
+          - hint: 'Original text: Rick , key: 4b4c301'
+            label: Text
+            name: 4b4c301
+            widget: string
+          - hint: 'Original text: Blain, key: 3d4a09c'
+            label: Text
+            name: 3d4a09c
+            widget: string
+          - hint: 'Original text: Charter Operation, key: 2ea62c52'
+            label: Text
+            name: 2ea62c52
+            widget: string
+          - hint: 'Original text: Louis, key: 46333dc'
+            label: Text
+            name: 46333dc
+            widget: string
+          - hint: 'Original text: Renault, key: -5bab9849'
+            label: Text
+            name: '-5bab9849'
+            widget: string
+          - hint: 'Original text: Client Administration, key: 16618153'
+            label: Text
+            name: '16618153'
+            widget: string
+          - hint: 'Original text: Our partners, key: 478b71f'
+            label: Text
+            name: 478b71f
+            widget: string
+          - hint: 'Original text: Introduction, key: 658fac3a'
+            label: Text
+            name: 658fac3a
+            widget: string
+          - hint: "Original text: Effective date: January 01,2021\_, key: -6efe8b05"
+            label: Text
+            name: '-6efe8b05'
+            widget: string
+          - hint: 'Original text: Corporate information, key: -589df62f'
+            label: Text
+            name: '-589df62f'
+            widget: string
+          - hint: "Original text: The controller for purposes of processing your personal\_data is:\_, key: 210f8b70"
+            label: Text
+            name: 210f8b70
+            widget: string
+          - hint: "Original text: Egypt Yachting\_, key: 4806e060"
+            label: Text
+            name: '4806e060'
+            widget: string
+          - hint: 'Original text: 84-513 El Gouna, key: 4c5b1e61'
+            label: Text
+            name: 4c5b1e61
+            widget: string
+          - hint: 'Original text: Red Sea, Egypt, key: 7202cf47'
+            label: Text
+            name: 7202cf47
+            widget: string
+          - hint: >-
+              Original text: If you have any questions or suggestions regarding
+              data protection or would like to exercise your rights, please feel
+              free to contact us at the following link:, key: 265b9c0f
+            label: Text
+            name: 265b9c0f
+            widget: text
+          - hint: >-
+              Original text: https://www.egyptyachting.com/contact , key:
+              49ab49cc
+            label: Text
+            name: 49ab49cc
+            widget: string
+          - hint: 'Original text: The subject of data protection, key: -50260e97'
+            label: Text
+            name: '-50260e97'
+            widget: string
+          - hint: >-
+              Original text: The subject of data protection is personal data,
+              i.e. all information relating to an identified or identifiable
+              natural person. Personal data is also referred to simply as data
+              in the following., key: -3804864e
+            label: Text
+            name: '-3804864e'
+            widget: text
+          - hint: 'Original text: Automated data collection, key: 25747644'
+            label: Text
+            name: '25747644'
+            widget: string
+          - hint: >-
+              Original text: When accessing our website, your end device
+              automatically transmits data for technical reasons. The following
+              data is stored separately from other data that you may transmit to
+              us:, key: -6f92bbf7
+            label: Text
+            name: '-6f92bbf7'
+            widget: text
+          - hint: 'Original text: - URL of the page accessed, key: 3484c6c0'
+            label: Text
+            name: 3484c6c0
+            widget: string
+          - hint: 'Original text: - Latency of the network connection, key: -25cb736d'
+            label: Text
+            name: '-25cb736d'
+            widget: string
+          - hint: 'Original text: - Date and time, key: 716e1cd5'
+            label: Text
+            name: 716e1cd5
+            widget: string
+          - hint: >-
+              Original text: We store this data for the following purposes:,
+              key: 6d2dd40b
+            label: Text
+            name: 6d2dd40b
+            widget: string
+          - hint: >-
+              Original text: - for load balancing, to be able to offer you the
+              fastest possible loading times, key: 174b5d51
+            label: Text
+            name: 174b5d51
+            widget: string
+          - hint: >-
+              Original text: - to ensure the security of our IT systems, e.g. to
+              defend against specific attacks on our systems and to recognize
+              attack patterns, key: -256ef930
+            label: Text
+            name: '-256ef930'
+            widget: text
+          - hint: >-
+              Original text: - to ensure the proper operation of our IT systems,
+              e.g. if errors occur that we can only rectify by storing the IP
+              address;, key: 5f9ebf79
+            label: Text
+            name: 5f9ebf79
+            widget: text
+          - hint: >-
+              Original text: - to enable criminal prosecution, averting of a
+              danger or legal prosecution in the event of specific indications
+              of criminal offenses, key: 3599bdfa
+            label: Text
+            name: 3599bdfa
+            widget: text
+          - hint: 'Original text: Types of data we collect, key: 73ddcaec'
+            label: Text
+            name: 73ddcaec
+            widget: string
+          - hint: >-
+              Original text: While using our Service, we may ask you to provide
+              us with certain personally identifiable information that can be
+              used to contact or identify you (“Personal Data”). Personally,
+              identifiable information may include, but is not limited to:, key:
+              5994d05
+            label: Text
+            name: 5994d05
+            widget: text
+          - hint: 'Original text: - Email address, key: 78a2389d'
+            label: Text
+            name: 78a2389d
+            widget: string
+          - hint: 'Original text: - Full name , key: -18dd13e9'
+            label: Text
+            name: '-18dd13e9'
+            widget: string
+          - hint: 'Original text: - Phone number, key: 6500436e'
+            label: Text
+            name: 6500436e
+            widget: string
+          - hint: >-
+              Original text: - Address, State, Province, ZIP/Postal code, City,
+              key: 19897bf
+            label: Text
+            name: 19897bf
+            widget: string
+          - hint: 'Original text: - Cookies and Usage Data, key: 5f9ed816'
+            label: Text
+            name: 5f9ed816
+            widget: string
+          - hint: >-
+              Original text: Email address, full name, phone number, address,
+              state will be retained until the user requests their removal.,
+              key: -33e8770f
+            label: Text
+            name: '-33e8770f'
+            widget: text
+          - hint: 'Original text: Cookies, key: -64062591'
+            label: Text
+            name: '-64062591'
+            widget: string
+          - hint: >-
+              Original text: We use functional, analytical and tracking cookies.
+              A cookie is a small text file that is stored in the browser of
+              your computer, tablet or smartphone when you first visit this
+              website. We use cookies with a purely technical functionality.
+              These ensure that the website works properly and that, for
+              example, your preferred settings are remembered. These cookies are
+              also used to make the website work properly and to optimise it. In
+              addition, we place cookies that keep track of your surfing
+              behavior so that we can offer customised content and
+              advertisements., key: 7ec8575d
+            label: Text
+            name: 7ec8575d
+            widget: text
+          - hint: 'Original text: Newsletter, key: -47761f27'
+            label: Text
+            name: '-47761f27'
+            widget: string
+          - hint: >-
+              Original text: You have the option on our website to register for
+              our newsletter. With our newsletter, we would like to send you
+              information on offers, tours, activities, or special promotions
+              that is as personalized as possible. By registering for our
+              newsletter, you, therefore, consent to us processing your email
+              address as the purpose of sending the newsletter. You can object
+              to this at any time – by deselecting the corresponding checkbox or
+              clicking the unsubscribe link in the e-mails. The newsletter is
+              distributed via “MailChimp”, a newsletter shipping platform of
+              Rocket Science Group, LLC, 675 Ponce De Leon Ave # 5000, Atlanta,
+              GA 30308, USA., key: 70c658ec
+            label: Text
+            name: 70c658ec
+            widget: text
+          - hint: 'Original text: Marketing and remarketing services, key: -628b4bf2'
+            label: Text
+            name: '-628b4bf2'
+            widget: string
+          - hint: >-
+              Original text: We place advertisements, paid links, etc. on
+              third-party sites on the web and social media platforms. To
+              measure the success of our advertisements, cookies are set –
+              insofar as you have consented – when you are redirected from the
+              relevant third-party site to our website to use them to analyze
+              click behavior for billing purposes., key: 35130d97
+            label: Text
+            name: 35130d97
+            widget: text
+          - hint: 'Original text: Google Analytics, key: 45cce5f'
+            label: Text
+            name: 45cce5f
+            widget: string
+          - hint: >-
+              Original text: Google Analytics is a web analytics service offered
+              by Google that tracks and reports website traffic. Google uses the
+              data collected to track and monitor the use of our Service. This
+              data is shared with other Google services. Google may use the
+              collected data to contextualize and personalize the ads of its
+              advertising network. For more information on the privacy practices
+              of Google, please visit the Google Privacy & Terms web page: ,
+              key: 7cb23e8c
+            label: Text
+            name: 7cb23e8c
+            widget: text
+          - hint: >-
+              Original text: https://policies.google.com/privacy?hl=en, key:
+              -3467ffc9
+            label: Text
+            name: '-3467ffc9'
+            widget: string
+          - hint: 'Original text: Facebook pixel, key: bd5a0cc'
+            label: Text
+            name: bd5a0cc
+            widget: string
+          - hint: >-
+              Original text: If you have consented, the Facebook pixel is used
+              on our website. The Facebook pixel records when you perform
+              certain actions on our website or visit certain areas on our
+              website. The Facebook pixel also collects usage data (such as URL,
+              referrer URL, IP address, device and browser characteristics, and
+              timestamp). The Facebook pixel generates a checksum (hash value)
+              from this information and transmits this hash value to Facebook.
+              If available, the Facebook cookie is also addressed and your
+              Facebook ID is transmitted. If you have a Facebook profile and log
+              in there, you can be presented with targeted personalized
+              advertising on Facebook based on the data transmitted by the
+              pixel. Data from users who do not have a Facebook profile is
+              discarded by Facebook without being used., key: -1d6a83f2
+            label: Text
+            name: '-1d6a83f2'
+            widget: text
+          - hint: 'Original text: Social media, key: 4077e991'
+            label: Text
+            name: '4077e991'
+            widget: string
+          - hint: >-
+              Original text: We operate pages or profiles on various social
+              media platforms. Within this context, personal data is processed
+              as described below. If you interact with us via our social media
+              sites or our posts, we will collect and process the information
+              you provide in connection with this, including your user name and
+              any profile photo, if applicable, for example, if you mark a post
+              with "Like", share or "retweet", comment or provide other content.
+              The data processing in this regard is regularly carried out based
+              on our legitimate interest in providing the corresponding
+              functions on our social media pages. Please also note that this
+              content is published on our relevant social media sites according
+              to your account settings and can be accessed by anyone worldwide.,
+              key: -1468bbfa
+            label: Text
+            name: '-1468bbfa'
+            widget: text
+          - hint: 'Original text: How we secure personal data, key: 56fa4ac3'
+            label: Text
+            name: 56fa4ac3
+            widget: string
+          - hint: >-
+              Original text: Egypt Yachting takes the protection of your data
+              seriously and takes appropriate measures to prevent misuse, loss,
+              unauthorised access, unwanted disclosure and unauthorised
+              modification. If you have the impression that your data is not
+              properly secured or there are indications of abuse, please contact
+              our customer service., key: -47b8b4f1
+            label: Text
+            name: '-47b8b4f1'
+            widget: text
+          - hint: 'Original text: Changes To This Privacy Policy, key: -7e6f943c'
+            label: Text
+            name: '-7e6f943c'
+            widget: string
+          - hint: >-
+              Original text: We may update our Privacy Policy from time to time.
+              We will notify you of any changes by posting the new Privacy
+              Policy on this page. You are advised to review this Privacy Policy
+              periodically for any changes. Changes to this Privacy Policy are
+              effective when they are posted on this page., key: 543f0a48
+            label: Text
+            name: 543f0a48
+            widget: text
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: "Original text: If you have any questions about this Privacy Policy, please contact us:\_, key: 38331f68"
+            label: Text
+            name: 38331f68
+            widget: string
+          - hint: 'Original text: Terms & Conditions , key: -5d6b87ab'
+            label: Text
+            name: '-5d6b87ab'
+            widget: string
+          - hint: >-
+              Original text: These are the Terms and Conditions governing the
+              use of this Service and the agreement that operates between You
+              and Egypt Yachting., key: 26cd3b5b
+            label: Text
+            name: 26cd3b5b
+            widget: text
+          - hint: 'Original text: Acknowledgment , key: 2e783d19'
+            label: Text
+            name: 2e783d19
+            widget: string
+          - hint: >-
+              Original text: These Terms and Conditions set out the rights and
+              obligations of all users regarding the use of the Service. Your
+              access to and use of the Service is conditioned on Your acceptance
+              of and compliance with these Terms and Conditions. These Terms and
+              Conditions apply to all visitors, users, and others who access or
+              use the Service. Our Privacy Policy describes Our policies and
+              procedures on the collection, use, and disclosure of Your personal
+              information when You use the Application or the Website and tells
+              You about Your privacy rights and how the law protects You. Please
+              read Our Privacy Policy carefully before using Our Service., key:
+              5525c898
+            label: Text
+            name: 5525c898
+            widget: text
+          - hint: 'Original text: Use of the Service, key: -4d9af70a'
+            label: Text
+            name: '-4d9af70a'
+            widget: string
+          - hint: >-
+              Original text: Egypt Yachting operates Services such as yacht &
+              boat charter, multi day tours, cruises, adventure trips, luxury
+              travels and other travel activities. Those Services are solely for
+              persons who are aged 18 years or older. Any access to or use of
+              the Platform by anyone under 18 years is expressly prohibited. By
+              accessing or using the Services and the Platform you guarantee
+              that you are 18 years or older., key: -7027c58f
+            label: Text
+            name: '-7027c58f'
+            widget: text
+          - hint: 'Original text: Prohibited Conduct, key: 1dff41e2'
+            label: Text
+            name: 1dff41e2
+            widget: string
+          - hint: >-
+              Original text: Egypt Yachting's Services are only available for
+              private, and non-commercial use. It is not allowed to sell,
+              re-sell, re-use or commercially use content, decrypt, decompile or
+              copy the information, software, products or services available on
+              our website. , key: -2e1baaea
+            label: Text
+            name: '-2e1baaea'
+            widget: text
+          - hint: 'Original text: Booking Policy, key: 16555719'
+            label: Text
+            name: '16555719'
+            widget: string
+          - hint: "Original text: By using our Service, you agree to be bound by the terms and conditions specified and communicated by Egypt Yachting or the payment service provider. We may require a security deposit for our Service. The amount of this deposit depends of the type of the service, which is usually 50%\_or above of the total charter freight, and should be made within 5 optional days. , key: 1e9e8aa8"
+            label: Text
+            name: 1e9e8aa8
+            widget: text
+          - hint: 'Original text: Cancellation Policy , key: 3ccf3f11'
+            label: Text
+            name: 3ccf3f11
+            widget: string
+          - hint: >-
+              Original text: If you wish to cancel your trip, simply send us a
+              message asking about cancellation and we will respond to let you
+              know the cancellation fees as soon as possible. Please keep in
+              mind that you can always postpone your Service without
+              cancellation. Our cancellation fees may vary based on the period
+              of the time between the date of cancellation, the departure date
+              and the boat charter. , key: -5f409593
+            label: Text
+            name: '-5f409593'
+            widget: text
+          - hint: >-
+              Original text:  In the event that the weather conditions are
+              extreme, preventing the boat from operating:, key: 3fb66bc4
+            label: Text
+            name: 3fb66bc4
+            widget: string
+          - hint: >-
+              Original text: - We will provide alternative date that will not
+              imply any reduction or increase in the rate or conditions. , key:
+              -1a2e57cb
+            label: Text
+            name: '-1a2e57cb'
+            widget: text
+          - hint: >-
+              Original text: - In the event that the weather conditions prevent
+              us from operating a safe trip, and we can not find an alternative
+              date, we will proceed with a full refund. The refund will be made
+              by bank transfer (excluding the transfer fee)., key: -7213d9cb
+            label: Text
+            name: '-7213d9cb'
+            widget: text
+          - hint: >-
+              Original text: Bad weather conditions are those that either
+              prevent the boat from leaving its base or that avert the boat trip
+              from being carried out with full guarantees of safety and fair
+              level of comfort for our guests. Please remember that you are
+              booking a sailing adventure in the outdoors - an extreme condition
+              is implied on what puts you in danger, and not necessarily what
+              might be slightly uncomfortable., key: -672b6269
+            label: Text
+            name: '-672b6269'
+            widget: text
+          - hint: 'Original text: Translation Interpretation, key: -10a7869'
+            label: Text
+            name: '-10a7869'
+            widget: string
+          - hint: >-
+              Original text: These Terms and Conditions may have been translated
+              if We have made them available to You on our Service. You agree
+              that the original English text shall prevail in the case of a
+              dispute., key: 63a78ecb
+            label: Text
+            name: 63a78ecb
+            widget: text
+          - hint: >-
+              Original text: If you have any questions about these Terms and
+              Conditions, You can contact us by email: , key: 7f9364f1
+            label: Text
+            name: 7f9364f1
+            widget: string
+          - hint: 'Original text: Sail throw the , key: 52aa9638'
+            label: Text
+            name: 52aa9638
+            widget: string
+          - hint: 'Original text: Red Sea , key: -2e7b6fe0'
+            label: Text
+            name: '-2e7b6fe0'
+            widget: string
+          - hint: >-
+              Original text: Charter a sailboat for a few days, spend the night
+              under the stars, and experience the Red Sea like never before.,
+              key: 7bd7bb4d
+            label: Text
+            name: 7bd7bb4d
+            widget: text
+          - hint: 'Original text: Daily trip with private motorboat, key: -694c4b4e'
+            label: Text
+            name: '-694c4b4e'
+            widget: string
+          - hint: >-
+              Original text:  Uncover the unknown with a daily adventure charter
+              and tick off your ultimate bucket list destinations., key:
+              26742f4e
+            label: Text
+            name: 26742f4e
+            widget: text
+          - hint: 'Original text: Presentation, key: 3356533a'
+            label: Text
+            name: 3356533a
+            widget: string
+          - hint: >-
+              Original text: With a world-class spa, accommodation for 36
+              guests, a helipad, beach club and two Jacuzzis, Moonlight II is
+              one of the most exciting charter yachts on the water., key:
+              71f836b3
+            label: Text
+            name: 71f836b3
+            widget: text
+          - hint: 'Original text: Gallery, key: 57850f32'
+            label: Text
+            name: 57850f32
+            widget: string
+          - hint: 'Original text: A virtual tour of the place., key: -5304a8d5'
+            label: Text
+            name: '-5304a8d5'
+            widget: string
+          - hint: >-
+              Original text: We've gathered som beautiful images of the place
+              here. However, if you would like to see images of something
+              specific please get in touch and we'll see what we can do., key:
+              66a43a2a
+            label: Text
+            name: 66a43a2a
+            widget: text
+          - hint: 'Original text: Details, key: -3fee75de'
+            label: Text
+            name: '-3fee75de'
+            widget: string
+          - hint: 'Original text: Features & Specifications, key: -31a7f73'
+            label: Text
+            name: '-31a7f73'
+            widget: string
+          - hint: >-
+              Original text: The jewel among the other boats on the Red Sea, M/Y
+              Turquise is a stylish, elegant steel superyacht lined to , key:
+              293b3232
+            label: Text
+            name: 293b3232
+            widget: text
+          - hint: 'Original text: North , key: -74943c25'
+            label: Text
+            name: '-74943c25'
+            widget: string
+          - hint: 'Original text: Interested?, key: -26f6c00a'
+            label: Text
+            name: '-26f6c00a'
+            widget: string
+          - hint: 'Original text: We''re ready when you are., key: 102e76f0'
+            label: Text
+            name: 102e76f0
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus
+              feugiat eros quis consectetur., key: 2a04c6e9
+            label: Text
+            name: 2a04c6e9
+            widget: text
+          - hint: 'Original text: Alice Aloha, key: -d95d043'
+            label: Text
+            name: '-d95d043'
+            widget: string
+          - hint: 'Original text: Charter manager, key: 204a8d78'
+            label: Text
+            name: 204a8d78
+            widget: string
+          - hint: 'Original text: +201008883929, key: 79cb51bd'
+            label: Text
+            name: 79cb51bd
+            widget: string
+          - hint: 'Original text: WhatsApp us , key: -48ec724c'
+            label: Text
+            name: '-48ec724c'
+            widget: string
+          - hint: 'Original text: Other listings, key: 46b6b59f'
+            label: Text
+            name: 46b6b59f
+            widget: string
+          - hint: >-
+              Original text: Other listings that might be of interest to you.,
+              key: -121bc175
+            label: Text
+            name: '-121bc175'
+            widget: string
+          - hint: 'Original text: See all listings, key: 255078db'
+            label: Text
+            name: 255078db
+            widget: string
+          - hint: 'Original text: Yachting Experience -, key: -332692e4'
+            label: Text
+            name: '-332692e4'
+            widget: string
+          - hint: 'Original text: your new way of living, key: 73cfeff4'
+            label: Text
+            name: 73cfeff4
+            widget: string
+          - hint: 'Original text: CHOOSE YOUR FAVORITE YACHT , key: -18435c07'
+            label: Text
+            name: '-18435c07'
+            widget: string
+          - hint: 'Original text: Sail like a millionaire, key: 5cd47b2e'
+            label: Text
+            name: 5cd47b2e
+            widget: string
+          - hint: >-
+              Original text: Live an unforgettable experience with your family
+              or friends cruising through the most beautiful landscapes of the
+              Red Sea. Experience life onboard tailored to your preferences -
+              select your favourite yacht - be your own captain., key: -4713b806
+            label: Text
+            name: '-4713b806'
+            widget: text
+          - hint: 'Original text: Explore more, key: -6d71d71e'
+            label: Text
+            name: '-6d71d71e'
+            widget: string
+          - hint: 'Original text: Your yachting experience, key: -1f14ba7e'
+            label: Text
+            name: '-1f14ba7e'
+            widget: string
+          - hint: 'Original text: motorboats, key: 16eeb7de'
+            label: Text
+            name: 16eeb7de
+            widget: string
+          - hint: 'Original text: tailored to your preferences, key: -6e41997e'
+            label: Text
+            name: '-6e41997e'
+            widget: string
+          - hint: 'Original text: sailboats, key: 67627de2'
+            label: Text
+            name: 67627de2
+            widget: string
+          - hint: 'Original text: EXPLORE THE UNEXPLORED, key: 74f53e46'
+            label: Text
+            name: 74f53e46
+            widget: string
+          - hint: 'Original text: LUXURY YACHTS, key: 7b703d1f'
+            label: Text
+            name: 7b703d1f
+            widget: string
+          - hint: 'Original text: The world''s finest luxury yachts, key: 19fe776b'
+            label: Text
+            name: 19fe776b
+            widget: string
+          - hint: 'Original text: DAILY TRIPS, key: 512df3e7'
+            label: Text
+            name: 512df3e7
+            widget: string
+          - hint: >-
+              Original text: ADVENTURE CHARTER FOR YOUR BUCKET LIST, key:
+              1b555283
+            label: Text
+            name: 1b555283
+            widget: string
+          - hint: 'Original text: EXPLORE MORE, key: 14a4ace2'
+            label: Text
+            name: 14a4ace2
+            widget: string
+          - hint: 'Original text: ESCAPE TO THE WORLD OF YOUR DREAMS, key: -2bf361a9'
+            label: Text
+            name: '-2bf361a9'
+            widget: string
+          - hint: 'Original text: Bespoke experiences, key: 4f3c9eb2'
+            label: Text
+            name: 4f3c9eb2
+            widget: string
+          - hint: >-
+              Original text: Enjoy every little moment spent on the sea. As soon
+              as you step onboard, your charter experience will be tailored to
+              your taste from food, drinks to any other activities., key:
+              b6ab345
+            label: Text
+            name: b6ab345
+            widget: text
+          - hint: 'Original text: Explore, key: 15309273'
+            label: Text
+            name: '15309273'
+            widget: string
+          - hint: 'Original text: our world, key: -7087ca42'
+            label: Text
+            name: '-7087ca42'
+            widget: string
+          - hint: 'Original text: ABOUT US, key: -70d4fbcf'
+            label: Text
+            name: '-70d4fbcf'
+            widget: string
+          - hint: 'Original text: sport, key: 6892774'
+            label: Text
+            name: '6892774'
+            widget: string
+          - hint: 'Original text: SUPER, key: 4b9775b'
+            label: Text
+            name: 4b9775b
+            widget: string
+          - hint: 'Original text: ultimate, key: -6908abaf'
+            label: Text
+            name: '-6908abaf'
+            widget: string
+          - hint: 'Original text: legacy, key: -41f50c37'
+            label: Text
+            name: '-41f50c37'
+            widget: string
+          - hint: 'Original text: 01, key: 601'
+            label: Text
+            name: '601'
+            widget: string
+          - hint: 'Original text: 02, key: 602'
+            label: Text
+            name: '602'
+            widget: string
+          - hint: 'Original text: 03, key: 603'
+            label: Text
+            name: '603'
+            widget: string
+          - hint: 'Original text: 04, key: 604'
+            label: Text
+            name: '604'
+            widget: string
+          - hint: 'Original text: MOTORBOATS, key: 33d8a3de'
+            label: Text
+            name: 33d8a3de
+            widget: string
+          - hint: 'Original text: SAILBOATS, key: d7a8dc2'
+            label: Text
+            name: d7a8dc2
+            widget: string
+          - hint: 'Original text: YACHTS, key: -646d2b54'
+            label: Text
+            name: '-646d2b54'
+            widget: string
+          - hint: 'Original text: SPEEDBOATS, key: 42c1ef4c'
+            label: Text
+            name: 42c1ef4c
+            widget: string
+          - hint: "Original text:  \_ \_ \_\_\_\_YACHTS \_\_\_\_\_ \_, key: 2aa310cc"
+            label: Text
+            name: 2aa310cc
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /our-team, key: 35a4c56d'
+            label: Link
+            name: 35a4c56d
+            widget: string
+          - hint: 'Original link: /contact-us, key: 5e5270da'
+            label: Link
+            name: 5e5270da
+            widget: string
+          - hint: 'Original link: tel:+201201089636, key: -3d45e20c'
+            label: Link
+            name: '-3d45e20c'
+            widget: string
+          - hint: >-
+              Original link:
+              mailto:info@egyptyachting.com?subject=Your%20yachting%20experience,
+              key: -462325ad
+            label: Link
+            name: '-462325ad'
+            widget: string
+          - hint: 'Original link: /terms-and-conditions, key: 7277c423'
+            label: Link
+            name: 7277c423
+            widget: string
+          - hint: 'Original link: /privacy-policy, key: 618fe506'
+            label: Link
+            name: 618fe506
+            widget: string
+          - hint: >-
+              Original link: https://www.facebook.com/egyptyachting, key:
+              1828db46
+            label: Link
+            name: 1828db46
+            widget: string
+          - hint: 'Original link: https://twitter.com/egyptyachting, key: 3260807e'
+            label: Link
+            name: 3260807e
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.tripadvisor.com/Attraction_Review-g297548-d23509111-Reviews-Egypt_Yachting-El_Gouna_Hurghada_Red_Sea_and_Sinai.html,
+              key: -4da9e40b
+            label: Link
+            name: '-4da9e40b'
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/egyptyachting, key:
+              -406afc9a
+            label: Link
+            name: '-406afc9a'
+            widget: string
+          - hint: >-
+              Original link: https://www.pinterest.de/fouroomdotco/, key:
+              69e7edcd
+            label: Link
+            name: 69e7edcd
+            widget: string
+          - hint: 'Original link: https://wa.me/+201201089636, key: -67ddadaf'
+            label: Link
+            name: '-67ddadaf'
+            widget: string
+          - hint: 'Original link: https://instagram.com/egyptyachting, key: -31a1443'
+            label: Link
+            name: '-31a1443'
+            widget: string
+          - hint: 'Original link: /motorboats, key: 6ceb894d'
+            label: Link
+            name: 6ceb894d
+            widget: string
+          - hint: 'Original link: /sailboats, key: 40de4293'
+            label: Link
+            name: 40de4293
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/luxury-yachts, key:
+              4841520
+            label: Link
+            name: '4841520'
+            widget: string
+          - hint: 'Original link: /daily-trips, key: 1a0ba8ab'
+            label: Link
+            name: 1a0ba8ab
+            widget: string
+          - hint: >-
+              Original link:
+              mailto:info@egyptyachting.com?subject=Yachting%20Experience, key:
+              7ba45e81
+            label: Link
+            name: 7ba45e81
+            widget: string
+          - hint: 'Original link: https://www.egyptyachting.com, key: 2801e2c3'
+            label: Link
+            name: 2801e2c3
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/terms-and-conditions,
+              key: -744bb6c0
+            label: Link
+            name: '-744bb6c0'
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/privacy-policy, key:
+              -50963c1d
+            label: Link
+            name: '-50963c1d'
+            widget: string
+          - hint: 'Original link: http://www.creative-boxx.com, key: -269752eb'
+            label: Link
+            name: '-269752eb'
+            widget: string
+          - hint: 'Original link: #content, key: 6c8056f6'
+            label: Link
+            name: 6c8056f6
+            widget: string
+          - hint: >-
+              Original link: https://policies.google.com/privacy?hl=en, key:
+              -3467ffc9
+            label: Link
+            name: '-3467ffc9'
+            widget: string
+          - hint: >-
+              Original link:
+              mailto:info@egyptyachting.com?subject=Privacy%20Policy%20, key:
+              2833f5a5
+            label: Link
+            name: 2833f5a5
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/our-world, key:
+              -56197a7b
+            label: Link
+            name: '-56197a7b'
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/motorboats, key:
+              -6566a156
+            label: Link
+            name: '-6566a156'
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/sailboats, key:
+              6ba1cd96
+            label: Link
+            name: 6ba1cd96
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/daily-trips, key:
+              -5de78112
+            label: Link
+            name: '-5de78112'
+            widget: string
+          - hint: 'Original link: /our-world, key: 7f22fa82'
+            label: Link
+            name: 7f22fa82
+            widget: string
+          - hint: >-
+              Original link: https://www.egyptyachting.com/our-team, key:
+              68924e0a
+            label: Link
+            name: 68924e0a
+            widget: string
+          - hint: 'Original link: /luxury-yachts, key: 4c53c39d'
+            label: Link
+            name: 4c53c39d
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: i4c7b379f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3dbb26d4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6820c5ce
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6849bba6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 51f48c04
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4ee7e4b4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 14d29f48
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 73cdfba8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i49146ccb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 68cf9b14
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i4441152b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i776fe4b5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6c7b0d3c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 20e124b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3f0ef502
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: id42a4ba
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i4cb1bfa2
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 72efefd
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 42651c8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: c3fba58
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7ffadf69
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 141f05d9
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i1de42e40
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i218481a5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i461d5f1b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4434e91b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7ca62fb0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i2ac6b77d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i717de6cc
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6ec0c10c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7dee8cd6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i696592de
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6988606c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 13b94ecf
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4758c798
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7421dba8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4f122b37
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 65b4ef7e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 39a0be07
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i3292afe0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i2b910411
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1a9bfd4a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i25840deb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i50b2ef85
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 62fe3cd8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 44c3887d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 74939f1d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i19869ae0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i4f586259
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i5cbbd470
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7e3cd68a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7d776323
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-267f0f3f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4f72cec1
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4b887ee2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2c4b5b96'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-66f495c8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4b780196
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6344b25d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6352c9de
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6360e15f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 636ef8e0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-341ad1b1'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-34614736'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4de2b37f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3428e932'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-713c1211'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2faa508e'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-624cbe78'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: fe468cd
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 26dce625
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1b265eaa
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-13c2b0f6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4ebb80cc
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3cbca8bd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7741e878'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2966e2e6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 77011f4d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-34532fb5'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 62821ccb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-544f0315'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-343700b3'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7198eb0e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+      - label: eCommerce
+        name: ecommerce
+        file: cms/_data/settings/ecommerce.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: eCommerce
+          - label: Currencies and Formats
+            name: currencies_and_formats
+            widget: object
+            fields:
+              - hint: >-
+                  Template used to format the price, you can use following
+                  placeholders: {amount}, {currencyCode}, {symbol}
+                name: template
+                label: Price Template
+                widget: string
+                required: true
+              - hint: Character to divide decimals
+                name: decimal
+                label: Decimal
+                widget: string
+                required: true
+              - hint: Character to group amount
+                name: group
+                label: Group
+                widget: string
+                required: true
+              - hint: Number of fraction digits
+                name: fractionDigits
+                label: Fraction Digits
+                widget: number
+                required: true
+                value_type: int
+              - hint: Hide decimals for whole prices
+                name: hideDecimalForWholeNumbers
+                label: Hide decimals
+                widget: boolean
+                required: false
+              - hint: ''
+                name: currencies
+                label: Currencies
+                widget: list
+                required: true
+                min: 1
+                fields:
+                  - hint: Currency Code (3 char) all lowercase
+                    name: currencyCode
+                    label: Currency Code
+                    widget: string
+                    required: true
+                  - hint: ''
+                    name: symbol
+                    label: Symbol
+                    widget: string
+                    required: true
+          - label: Snipcart
+            name: snipcart
+            widget: object
+            fields:
+              - hint: Public Api Key
+                name: apiKey
+                label: Api Key
+                widget: string
+                required: true
+          - label: Snipcart Style
+            name: css
+            widget: object
+            fields:
+              - hint: 'Original Font Family: Open Sans,sans-serif'
+                name: main-font
+                label: Main font
+                widget: string
+                required: true
+              - hint: 'Original Font Family: Montserrat,sans-serif'
+                name: heading-font
+                label: Heading font
+                widget: string
+                required: true
+              - hint: 'Original color: #f7f7f8'
+                name: bgColor-alt
+                label: BgColor alt
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-badge
+                label: BgColor badge
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fceae8'
+                name: bgColor-buttonDanger-active
+                label: BgColor buttonDanger active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fceae8'
+                name: bgColor-buttonDanger-focus
+                label: BgColor buttonDanger focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fdefed'
+                name: bgColor-buttonDanger-hover
+                label: BgColor buttonDanger hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: bgColor-buttonPrimary
+                label: BgColor buttonPrimary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: bgColor-buttonPrimary-active
+                label: BgColor buttonPrimary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: bgColor-buttonPrimary-focus
+                label: BgColor buttonPrimary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: bgColor-buttonPrimary-hover
+                label: BgColor buttonPrimary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e7f6fe'
+                name: bgColor-buttonSecondary-active
+                label: BgColor buttonSecondary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #ecf8fe'
+                name: bgColor-buttonSecondary-focus
+                label: BgColor buttonSecondary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #ecf8fe'
+                name: bgColor-buttonSecondary-hover
+                label: BgColor buttonSecondary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-default
+                label: BgColor default
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-input
+                label: BgColor input
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: bgColor-input-checked
+                label: BgColor input checked
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #f1f2f4'
+                name: bgColor-input-disabled
+                label: BgColor input disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-input-focus
+                label: BgColor input focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: bgColor-input-hover
+                label: BgColor input hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: bgColor-link
+                label: BgColor link
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #d9f0fc'
+                name: bgColor-link-focus
+                label: BgColor link focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #f1f2f4'
+                name: bgColor-modal
+                label: BgColor modal
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-badge
+                label: BorderColor badge
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-badge-active
+                label: BorderColor badge active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-badge-disabled
+                label: BorderColor badge disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger
+                label: BorderColor buttonDanger
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonDanger-active
+                label: BorderColor buttonDanger active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-disabled
+                label: BorderColor buttonDanger disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-error
+                label: BorderColor buttonDanger error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-focus
+                label: BorderColor buttonDanger focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-hover
+                label: BorderColor buttonDanger hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonDanger-success
+                label: BorderColor buttonDanger success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary
+                label: BorderColor buttonPrimary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonPrimary-active
+                label: BorderColor buttonPrimary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary-disabled
+                label: BorderColor buttonPrimary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonPrimary-error
+                label: BorderColor buttonPrimary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary-focus
+                label: BorderColor buttonPrimary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonPrimary-hover
+                label: BorderColor buttonPrimary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonPrimary-success
+                label: BorderColor buttonPrimary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary
+                label: BorderColor buttonSecondary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-buttonSecondary-active
+                label: BorderColor buttonSecondary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-disabled
+                label: BorderColor buttonSecondary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-error
+                label: BorderColor buttonSecondary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-focus
+                label: BorderColor buttonSecondary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-hover
+                label: BorderColor buttonSecondary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: transparent'
+                name: borderColor-buttonSecondary-success
+                label: BorderColor buttonSecondary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-default
+                label: BorderColor default
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-input
+                label: BorderColor input
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: borderColor-input-checked
+                label: BorderColor input checked
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: borderColor-input-disabled
+                label: BorderColor input disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: borderColor-input-error
+                label: BorderColor input error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: borderColor-input-focus
+                label: BorderColor input focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0aa7f5'
+                name: borderColor-input-hover
+                label: BorderColor input hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link
+                label: BorderColor link
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link-active
+                label: BorderColor link active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link-focus
+                label: BorderColor link focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-link-hover
+                label: BorderColor link hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: currentColor'
+                name: borderColor-success
+                label: BorderColor success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-alt
+                label: Color alt
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: color-badge
+                label: Color badge
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: color-badge-active
+                label: Color badge active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-badge-disabled
+                label: Color badge disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-buttonDanger
+                label: Color buttonDanger
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-buttonDanger-active
+                label: Color buttonDanger active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-buttonDanger-disabled
+                label: Color buttonDanger disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-buttonDanger-error
+                label: Color buttonDanger error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-buttonDanger-focus
+                label: Color buttonDanger focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-buttonDanger-hover
+                label: Color buttonDanger hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #29c768'
+                name: color-buttonDanger-success
+                label: Color buttonDanger success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary
+                label: Color buttonPrimary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-active
+                label: Color buttonPrimary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e3e6e8'
+                name: color-buttonPrimary-disabled
+                label: Color buttonPrimary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-error
+                label: Color buttonPrimary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-focus
+                label: Color buttonPrimary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-hover
+                label: Color buttonPrimary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-buttonPrimary-success
+                label: Color buttonPrimary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #133986'
+                name: color-buttonSecondary
+                label: Color buttonSecondary
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #133986'
+                name: color-buttonSecondary-active
+                label: Color buttonSecondary active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-buttonSecondary-disabled
+                label: Color buttonSecondary disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-buttonSecondary-error
+                label: Color buttonSecondary error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #133986'
+                name: color-buttonSecondary-focus
+                label: Color buttonSecondary focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-buttonSecondary-hover
+                label: Color buttonSecondary hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #29c768'
+                name: color-buttonSecondary-success
+                label: Color buttonSecondary success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-default
+                label: Color default
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #e85a4a'
+                name: color-error
+                label: Color error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-input
+                label: Color input
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #fff'
+                name: color-input-checked
+                label: Color input checked
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-input-disabled
+                label: Color input disabled
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #9e2215'
+                name: color-input-error
+                label: Color input error
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-input-focus
+                label: Color input focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-input-hover
+                label: Color input hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #8f99a3'
+                name: color-inputIcon
+                label: Color inputIcon
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #2e3338'
+                name: color-inputLabel
+                label: Color inputLabel
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-link
+                label: Color link
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-link-active
+                label: Color link active
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #1a4db3'
+                name: color-link-focus
+                label: Color link focus
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #0d59f2'
+                name: color-link-hover
+                label: Color link hover
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+              - hint: 'Original color: #29c768'
+                name: color-success
+                label: Color success
+                widget: color
+                required: true
+                enableAlpha: true
+                allowInput: true
+local_backend: true
+publish_mode: editorial_workflow
